@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Good Thymes Virtual Grocery</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../../../css/index.css" th:href="@{/css/index.css}" />
+</head>
+
+<body>
+
+<h1>Product list</h1>
+
+<table>
+    <tr>
+        <th>No</th>
+        <th>NAME</th>
+        <th>PRICE</th>
+        <th>IN STOCK</th>
+        <th>Comments</th>
+    </tr>
+    <tr th:each="prod,prodStat : ${prods}"
+        th:class="${prodStat.first} ? 'first'"
+        th:classappend="${prodStat.last} ? 'last'">
+        <th th:text="${prodStat.count}">1</th>
+        <td th:text="${prod.name}">Onions</td>
+        <td th:text="${prod.price}">2.41</td>
+        <td th:text="${prod.inStock}? #{true} : #{false}">yes</td>
+        <th>
+            <span th:text="${#lists.size(prod.comments)}">2</span> Comment/s
+            <a href="comments.html"
+               th:href="@{/product/comments(prodId=${prod.id})}"
+               th:unless="${#lists.isEmpty(prod.comments)}">View</a>
+        </th>
+    </tr>
+</table>
+
+<p>
+    <a href="../home.html" th:href="@{/}">Return to home</a>
+</p>
+
+<!--/* This code will be removed at Thymeleaf parsing time! */-->
+
+<!--/*-->
+<div>
+    you can see me only before Thymeleaf processes me!
+</div>
+<!--*/-->
+
+<div th:insert="~{footer :: #copy}"></div>
+
+</body>
+
+</html>

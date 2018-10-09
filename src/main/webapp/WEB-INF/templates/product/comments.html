@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Good Thymes Virtual Grocery</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../../../css/index.css" th:href="@{/css/index.css}" />
+</head>
+
+<body>
+
+<h1>Comment list</h1>
+
+<p>Product Name: <span th:text="${product.name}"></span></p>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Content</th>
+    </tr>
+    <tr th:each="comment,commentStat : ${product.comments}"
+        th:class="${commentStat.first} ? 'first'"
+        th:classappend="${commentStat.last} ? 'last'">
+        <th th:text="${comment.id}">1</th>
+        <td th:text="${comment.text}">good product</td>
+    </tr>
+</table>
+
+
+<p>
+    <a href="../home.html" th:href="@{/}">Return to home</a>
+</p>
+
+<div th:insert="footer :: #copy"></div>
+
+</body>
+
+</html>

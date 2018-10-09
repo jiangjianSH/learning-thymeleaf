@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Good Thymes Virtual Grocery</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../../css/index.css" th:href="@{/css/index.css}" />
+</head>
+
+<body>
+
+<p th:text="#{home.welcome(${session.user.name})}">Welcome to our grocery store!</p>
+<p th:utext="#{home.slogen}">today is good</p>
+<p>Today is <span th:text="${#calendars.format(today, 'dd MMMM yyyy')}"></span></p>
+<p>Today is <span th:text="${{today}}"></span></p>
+
+Established locale country: <span th:text="${#locale.country}">US</span>.
+
+<div th:object="${session.user}">
+    <p>Name: <span th:text="*{firstName}">Sebastian</span>.</p>
+    <p>Surname: <span th:text="*{lastName}">Pepper</span>.</p>
+    <p>Nationality: <span th:text="*{nationality}">Saturn</span>.</p>
+    <p>Age: <span th:text="*{age} ?: 'no age specified'">27</span> </p>
+</div>
+
+<p>Link</p>
+<a href="details" th:href="@{~/detail.html}">测试链接</a>
+
+
+<p>Please select an option</p>
+<ol>
+    <li><a href="product/list.html" th:href="@{/product/list}">Product List</a></li>
+    <li><a href="order/list.html" th:href="@{/order/list}">Order List</a></li>
+    <li><a href="subscribe.html" th:href="@{/subscribe}">Subscribe to our Newsletter</a></li>
+    <li><a href="userprofile.html" th:href="@{/userprofile}">See User Profile</a></li>
+</ol>
+
+<p th:text="'this is a text literal'">demo</p>
+
+<p th:text="'the name of user is ' + ${session.user.name}"></p>
+
+<p th:text="|the name of user is ${session.user.name}|"></p>
+
+<p> 1 + 1 = <i th:text="1 + 1"></i> </p>
+<p> 1 - 1 = <i th:text="1 - 1"></i> </p>
+
+<p> 2 * 3 = <i th:text="2 * 3"></i> </p>
+
+<p> 4 / 2 = <i th:text="4 / 2"></i> </p>
+<p> 5 % 3 = <i th:text="5 % 3"></i> </p>
+
+<p th:text="1 < 3"></p>
+
+<p th:class="${demo} ? 'what'"></p>
+
+<p th:class="info" th:classappend="${hasError} ? 'error'">th:classappend示例</p>
+
+<p th:style="'font-size:12px;'" th:styleappend="'color:green;'">th:styleappend示例</p>
+
+<span th:whatever="${session.user.name}">...</span>
+
+<div th:switch="${grade}">
+    <p th:case="'90'">A</p>
+    <p th:case="'80'">B</p>
+    <p th:case="*">/</p>
+</div>
+
+<script th:inline="javascript">
+    /*[+
+    var a = 0;
+    console.log('haaa');
+     +]*/
+
+    /*[-  */
+    var a = 'i will be removed';
+    /* -]*/
+</script>
+
+
+
+</body>
+</html>

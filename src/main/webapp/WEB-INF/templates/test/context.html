@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Title</title>
+</head>
+<body>
+    <p>context val:<i th:text="${c1}"></i></p>
+    <p>request param: <i th:text="${param.name}"></i></p>
+    <p>session attribute: <i th:text="${session.randomValue}"></i></p>
+    <p>application attribute: <i th:text="${application.author}"></i></p>
+</body>
+</html>

@@ -1,0 +1,15 @@
+.info {
+    border: 2px solid green;
+}
+
+.error {
+    background-color: red;
+}
+
+.first {
+    background-color: gold;
+}
+
+.last {
+    background-color: greenyellow;
+}
